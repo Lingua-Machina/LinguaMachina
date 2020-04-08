@@ -138,11 +138,21 @@ yeet param1: $a param2: "1337"     # param1:param2
 
 ##### Binary messages
 ```
-1 + 2
-2 - 3
-3 * 4
-4 / 5
-5 % 6
+a + b
+a - b
+a * b
+a / b
+a % b
+
+a < b
+a > b
+a <= b
+b >= a
+a == b
+a != b
+
+a && b
+a || b
 ```
 
 <hr>
