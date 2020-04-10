@@ -161,7 +161,7 @@ a || b
 
 #### Variable declaration
 ```
-let myVar = 1337
+myVar := 1337
 ```
 
 #### Variable assignment
