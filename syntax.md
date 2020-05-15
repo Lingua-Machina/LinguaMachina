@@ -6,10 +6,10 @@
 ### Comments
 
 ```
-# Hello
+# Hello #
 
 # Hello
-# World
+  World #
 ```
 
 <hr>
@@ -48,14 +48,13 @@ false
 $a
 $$
 $_
-$ 
 ```
 
 #### Symbols
 ```
 'hello
 'hello:world
-'HowAreYouToday?
+'HowAreYouToday
 ```
 
 #### Nil
@@ -72,11 +71,11 @@ nil
 
 ```
 { :param1 :param2 |
-    # a block of code
+    # a block of code with params #
 }
 
 {
-    # a block of code with params
+    # a block of code #
 }
 ```
 
@@ -109,22 +108,22 @@ anObject methodA
 ```
 anObject methodA
         | (methodB: "hello" 
-            |> methodB')
-        | (methodC
-            |> methodD: 1337)
+            |> methodC)
+        | (methodD
+            |> methodE: 1337)
 
 anotherObject methodA
         |> (methodB: "hello" 
-            | methodB')
-        |> (methodC
-            | methodD: 1337)
+            | methodC)
+        |> (methodD
+            | methodE: 1337)
 ```
 
-#### Representation
+#### String representation of selectors
 ```
-anObject myMessage                 # myMesage
-anotherObject aMessageWith: param  # aMessageWith:
-yeet param1: $a param2: "1337"     # param1:param2
+anObject myMessage                 # myMesage      #
+anotherObject aMessageWith: param  # aMessageWith: #
+yeet param1: $a param2: "1337"     # param1:param2 #
 ```
 
 #### Special messages
@@ -184,25 +183,35 @@ anObject hello: 'world
 ^1337
 ```
 
+#### Statements separator
+When multiple statements are in a block they must 
+be separated by semi-colons (**;**).
+```
+a := 1300;
+anObject myMessage: a;
+^a + 37
+```
+Please note that the last semi-colon is optional.
+
 <hr>
 
 ### Classes
 ```
 Object subclass: 'Person
-    instanceVars: [ 'name, 'age ]
+    instanceVars: [ 'name, 'age ];
 
-Person class>>newWithName: name andAge: age {
-    # Primary constructor
+Person class >> newWithName: name andAge: age {
+    # Primary constructor #
     ^self new
         |> (name: name
             | age: age)
-}
+};
 
-Person>>isMinor {
+Person >> isMinor {
     ^age < 21
-}
+};
 
-Person>>asString {
+Person >> asString {
     ^name + ", " + age asString
 }
 ```
@@ -221,13 +230,19 @@ Methods are automatically created to access instance variables. In this case: ``
 
 #### Method creation syntactic sugar
 ```
-Person>>isMinor {
+Person >> isMinor {
     ^age < 21
 }
 ```
-Maps to:
+Could be written as:
 ```
 Person compile: "isMinor {
     ^age < 21
 }"
 ```
+
+#### Primitive Method Declaration
+```
+Class :: compile: codeString = 'compilePrimitive:
+```
+With ***compilePrimitive:*** being the id of the registered primitive.
