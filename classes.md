@@ -43,3 +43,12 @@ Person compile: "isMinor {
     ^age < 21
 }"
 ```
+
+#### Primitive method declaration syntactic sugar
+```
+MyClass :: method = 'primitiveMethod
+```
+Could be written as:
+```
+MyClass bind: 'method toPrimitive: 'primitiveMethod
+```
