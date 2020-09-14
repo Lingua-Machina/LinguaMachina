@@ -78,6 +78,8 @@ nil
     # a block of code #
 }
 ```
+The return value of blocks is implicitely the value of their last statement.
+To force no return value just return *nil*.
 
 <hr>
 
