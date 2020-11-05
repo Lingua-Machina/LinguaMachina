@@ -70,7 +70,7 @@ nil
 #### Blocks
 
 ```
-{ :param1 :param2 |
+{ | param1 param2 |
     # a block of code with params #
 }
 
@@ -78,7 +78,7 @@ nil
     # a block of code #
 }
 ```
-The return value of blocks is implicitely the value of their last statement.
+The return value of blocks is implicitly the value of their last statement.
 To force no return value just return *nil*.
 
 <hr>
