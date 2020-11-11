@@ -28,7 +28,7 @@ Array >> reversed {
 	reversedArray := [];
 
 	length to: 1 do: { | i |
-		reversedArray add: i;
+		reversedArray add: (self getAt: i);
 	};
 
 	^reversedArray
