@@ -1,6 +1,6 @@
 # Modules
 
-<hr>
+---
 
 Modules are files that contains Lingua Machina code. When importing values from a module, a path relative to the root of the project is used. A *module* object is instantiated for every loaded module. This object is responsible of import/export. Code in modules is executed once and the module exports are cached.
 

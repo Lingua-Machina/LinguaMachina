@@ -1,6 +1,6 @@
 # Syntax
 
-<hr>
+---
 
 ## Comments
 
@@ -11,7 +11,7 @@
   World #
 ```
 
-<hr>
+---
 
 ## Literals
 
@@ -82,7 +82,7 @@ Blocks are like closures in other languages.
 The return value of a block is implicitly the value of its last statement.
 Declaration and assignment both have a *nil* return value.
 
-<hr>
+---
 
 ## Messages
 
@@ -180,7 +180,7 @@ a && b
 a || b
 ```
 
-<hr>
+---
 
 ## Statements
 
@@ -214,13 +214,13 @@ anObject myMessage: a;
 ```
 Please note that the last semi-colon is optional.
 
-<hr>
+---
 
 ## Conditions and loops
 
 See [main article](conditions_and_loops.md)
 
-<hr>
+---
 
 ## Classes
 

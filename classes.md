@@ -1,6 +1,6 @@
 # Classes
 
-<hr>
+---
 
 ## Example
 

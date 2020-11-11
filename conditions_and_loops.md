@@ -1,6 +1,6 @@
 # Conditions and loops
 
-<hr>
+---
 
 Conditions and loops are achieved through messages to various objects.
 
