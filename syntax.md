@@ -1,9 +1,8 @@
-# Lingua Machina
+# Syntax
 
-## Syntax
 <hr>
 
-### Comments
+## Comments
 
 ```
 # Hello #
@@ -14,60 +13,62 @@
 
 <hr>
 
-### Literals
+## Literals
 
-#### Integers
+### Integers
 ```
 1337
 1234
 -1
 ```
 
-#### Doubles
+### Doubles
 ```
 1.0
 1.1e10
 -1e10
 ```
 
-#### Booleans
+### Booleans
 ```
 true
 false
 ```
 
-#### Strings
+### Strings
 ```
 "hello everyone !"
 ""
 "Wow\nAmazing"
 ```
 
-#### Chars
+### Chars
 ```
 $a
 $$
 $_
 ```
 
-#### Symbols
+### Symbols
 ```
 'hello
 'hello:world
 'HowAreYouToday
 ```
 
-#### Nil
+### Nil
 ```
 nil
 ```
 
-#### Arrays
+### Arrays
 ```
 [1, 3, "hello"]
 ```
 
-#### Blocks
+### Blocks
+
+Blocks are like closures in other languages.
 
 ```
 { | param1 param2 |
@@ -78,66 +79,89 @@ nil
     # a block of code #
 }
 ```
-The return value of blocks is implicitly the value of their last statement.
-To force no return value just return *nil*.
+The return value of a block is implicitly the value of its last statement.
+Declaration and assignment both have a *nil* return value.
 
 <hr>
 
-### Messages
+## Messages
 
-#### Sending
+Messages are similar to method calls in other languages. They are dynamically dispatched at runtime.
+
+The syntax for message sending is similar to Kotlin's keyword arguments:
+
+```kotlin
+myCollection.add(index = 42, element = "helloworld!")
+```
+
+Is written as:
+
+```
+myCollection put: "helloworld!" at: 42
+```
+
+### Message sending
+
 ```
 anObject myMessage
-anotherObject aMessageWith: param
-yeet param1: $a param2: "1337"
+anotherObject aMessage: 42
+yetAnotherOne aMessageWithParam1: $a withParam2: "1337"
 ```
 
-#### Chaining
+We call a *message* the combination of a *selector* and its parameters values. A *message* is sent to a *receiver* (`anObject` for example).
+
+in the example above, `aMessage: 42` is a message with a *selector* equal to `aMessage:` and with `42` as a value for the only parameter of the *selector*. The other *selectors* in this example are `myMessage` and `aMessageWithParam1:withParam2:`.
+
+### Chaining
+
+When chaining messages, the result of a message sent becomes the receiver of a next message.
+
 ```
 anObject methodA
         |> methodB: "hello"
         |> methodC
 ```
 
-#### Cascading
+In this example, the message `methodB: "hello"` is sent to the return value of `anObject methodA` and `methodC` to the result of the `methodB:` message.
+
+### Cascading
+
+When cascading messages, all the messages are sent to the original receiver.
+
 ```
 anObject methodA
         | methodB: "hello"
         | methodC
 ```
 
-#### Combining both
+Here the messages `methodA`, `methodB: "hello"` and `methodC` are all sent to `anObject`.
+
+### Combining both
+
+By grouping chains and cascades in parentheses we can mix them.
+
 ```
 anObject methodA
-        | (methodB: "hello" 
-            |> methodC)
-        | (methodD
-            |> methodE: 1337)
+        | (methodB: "hello" |> methodC)
+        | (methodD |> methodE: 1337)
 
 anotherObject methodA
-        |> (methodB: "hello" 
-            | methodC)
-        |> (methodD
-            | methodE: 1337)
+        |> (methodB: "hello" | methodC)
+        |> (methodD | methodE: 1337)
 ```
 
-#### String representation of selectors
-```
-anObject myMessage                 # myMesage      #
-anotherObject aMessageWith: param  # aMessageWith: #
-yeet param1: $a param2: "1337"     # param1:param2 #
-```
+### Special messages
 
-#### Special messages
+Special messages don't follow the syntax of regular messages for ease of use purpose.
 
-##### Unary messages
+#### Unary messages
 ```
 -a
 +b
 !c
 ```
 
-##### Binary messages
+#### Binary messages
 ```
 a + b
 a - b
@@ -158,34 +182,29 @@ a || b
 
 <hr>
 
-### Statements
+## Statements
 
-#### Variable declaration
+### Variable declaration
 ```
 myVar := 1337
 ```
 
-#### Variable assignment
+### Variable assignment
 ```
 myVar = nil
 ```
 
-#### Message passing
-```
-anObject hello: 'world
-```
-
-#### Local return
+### Local return
 ```
 <1337
 ```
 
-#### Non local return
+### Non local return
 ```
 ^1337
 ```
 
-#### Statements separator
+### Statements separator
 When multiple statements are in a block they must 
 be separated by semi-colons (**;**).
 ```
@@ -197,15 +216,26 @@ Please note that the last semi-colon is optional.
 
 <hr>
 
-#### Method declaration
+## Conditions and loops
+
+See [main article](conditions_and_loops.md)
+
+<hr>
+
+## Classes
+
+See [main article](classes.md)
+
+### Method declaration
+
 ```
-ClassName >> methodName: arg {
+ClassName >> methodName: argName {
     ...
 }
 ```
 
-#### Primitive Method Declaration
+### Primitive Method Declaration
 ```
-ClassName :: methodName: arg = 'primitiveName:
+ClassName :: methodName: argName = 'primitiveName:
 ```
 With ***primitiveName:*** being the id of the registered primitive.

@@ -1,4 +1,9 @@
 # Conditions and loops
+
+<hr>
+
+Conditions and loops are achieved through messages to various objects.
+
 ## Conditions
 ```
 (i == 1337) ifTrue: { ... }
@@ -11,13 +16,14 @@
 
 ## Loops
 ```
-{ ... } repeat;
+{ # some code # } repeat;
 
-{ ... } repeatTimes: 42;
+{ # some code # } repeatTimes: 42;
 
-{ i < 42 } whileTrue: { ... };
+{ i < 42 } whileTrue: { # some code # };
 
-1 to: 10 each: { | i | ... };
+1 to: 10 each: { | i | # some code using 'i' (or not) # };
 
-(1 to: 10) each: { | i | ... };
+[1, 2, 3] each: { | i | # some code  using 'i' (or not) # };
 ```
+
